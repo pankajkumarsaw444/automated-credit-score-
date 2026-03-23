@@ -1,13 +1,15 @@
 package com.bank.credit.serviceimpl;
 
 import org.springframework.stereotype.Service;
+import com.bank.credit.entity.Customer;
 import com.bank.credit.service.CreditScoreService;
 
 @Service
 public class CreditScoreServiceImpl implements CreditScoreService {
 
     @Override
-    public int calculateCreditScore(Double income) {
+    public int calculateCreditScore(Customer customer) {
+        double income = customer.getIncome().doubleValue();
 
         if (income >= 500000) {
             return 800;
@@ -18,4 +20,3 @@ public class CreditScoreServiceImpl implements CreditScoreService {
         }
     }
 }
-
