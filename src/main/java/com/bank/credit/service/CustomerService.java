@@ -22,4 +22,7 @@ public interface CustomerService {
     
     // In CustomerService.java
     Customer getCustomerByEmailId(String emailId);
+    
+    List<Customer> getCustomersByIncomeRange(Double min, Double max);
+    
 }

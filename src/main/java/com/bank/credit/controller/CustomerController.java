@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.bank.credit.entity.Customer;
 import com.bank.credit.service.CustomerService;
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/customers")
 public class CustomerController {
 
     @Autowired
@@ -50,5 +50,13 @@ public class CustomerController {
     public String deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
         return "Customer deleted successfully";
+    }
+    
+ // GET CUSTOMERS BY INCOME RANGE
+    @GetMapping("/income-range")
+    public List<Customer> getCustomersByIncomeRange(
+            @RequestParam Double min,
+            @RequestParam Double max) {
+        return customerService.getCustomersByIncomeRange(min, max);
     }
 }

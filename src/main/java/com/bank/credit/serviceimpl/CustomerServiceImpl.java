@@ -62,4 +62,8 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
     }
     
+    @Override
+    public List<Customer> getCustomersByIncomeRange(Double min, Double max) {
+        return customerRepository.findByIncomeBetween(min, max);
+    }
 }
